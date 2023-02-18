@@ -9,7 +9,7 @@ See [sweeten-challenge.herokuapp.com](https://sweeten-challenge.herokuapp.com/) 
 ### Installation
 Install the dependencies and devDependencies and start the server.
 ```sh
-$ git clone https://github.com/usmanasif/sweeten-challenge.git
+$ git clone https://github.com/devmobin7/sweeten-challenge.git
 $ cd sweeten-challenge
 $ bundle install
 $ rails db:create
