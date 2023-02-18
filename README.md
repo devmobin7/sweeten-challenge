@@ -29,8 +29,6 @@ You are good to go! Run the app.
 
 ### Run Test cases
  ```sh
- $ rspec
- or
- $ rake
+ $ rails test
  ```
 

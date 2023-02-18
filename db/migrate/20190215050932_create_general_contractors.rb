@@ -7,7 +7,7 @@ class CreateGeneralContractors < ActiveRecord::Migration[5.2]
       t.decimal :max_budget
       t.boolean :design_services, null: false, default: false
       t.boolean :build_services, null: false, default: false
-      t.integer :rating, default: 0
+      t.decimal :rating, default: 0
       t.integer :project_count, default: 0
 
       t.timestamps
