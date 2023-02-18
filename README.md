@@ -1,7 +1,9 @@
 
+
 # Sweeten Challenge
 Sweeten Challenege is a application for matching general contractors with homeowners to perform their renovation projects. Each homeowner gets 3 matches depending on their requirement, location and services so they can compare bids and choose the best contractor for the job.
 
+See [sweeten-challenge.herokuapp.com](https://sweeten-challenge.herokuapp.com/) for live demo.
 
 
 ### Installation
