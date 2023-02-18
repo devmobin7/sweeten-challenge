@@ -1,14 +1,6 @@
 <%= render template: 'home/index' %>
 
-<% flash.each do |key, value| %>
-<div class='row'>
-  <div class='col-sm-4'></div>
-  <div class='col-sm-4 text-center'>
-    <p id='notice' class='alert alert-<%= key %>'><%= value %></p>
-  </div>
-  <div class='col-sm-4'></div>
-</div>
-<% end %>
+<%= render 'layouts/flash_messages' %>
 
 <div class='col-sm-4'></div>
 <div class='col-sm-4 text-center form-body'>

@@ -1,7 +1,7 @@
 class GeneralContractor < ApplicationRecord
-  HIGH_CONTRACTORS    = 4.0     #Based on Ranking
-  AVERAGE_CONTRACTORS = 2.5     #Based on Ranking
-  NEW_CONTRACTORS     = 2       #Based on Total Number of Projects
+  HIGH_CONTRACTORS    = 4.0     # Based on Ranking
+  AVERAGE_CONTRACTORS = 2.5     # Based on Ranking
+  NEW_CONTRACTORS     = 2       # Based on Total Number of Projects
 
   acts_as_mappable :lat_column_name => :latitude,
                    :lng_column_name => :longitude

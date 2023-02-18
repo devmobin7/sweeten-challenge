@@ -1,0 +1,14 @@
+<div id='flash-message'>
+  <div class='row'>
+    <div class='col-sm-4'></div>
+    <div class='col-sm-4 text-center'>
+      <% flash.each do |key, value| %>
+        <div class='<%= flash_class(key) %>'>
+          <%= link_to 'x', '#', class: 'btn-link pull-right close', data: { dismiss: 'alert' } %>
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
+    <div class='col-sm-4'></div>
+  </div>
+</div>

@@ -7,9 +7,9 @@ class ContractsController < ApplicationController
     @contract = Contract.new(contract_params)
 
     if @contract.save
-      redirect_to @renovation_project, flash: {success: 'Successfully Signed Contract!'}
+      flash.now[:success] = 'Successfully Signed Contract!'
     else
-      redirect_to @renovation_project, flash: {danger: 'Failed to Signed Contract!'}
+      flash.now[:alert] = 'Failed to Signed Contract!'
     end
   end
 
@@ -17,9 +17,9 @@ class ContractsController < ApplicationController
     @contract = ContractService.new(params).update(@contract)
 
     if @contract.valid?
-      redirect_to @general_contractor, flash: {success: 'Successfully Closed Contract!'}
+      flash.now[:success] = 'Successfully Closed Contract!'
     else
-      redirect_to @general_contractor, flash: {danger: 'Failed to Close Contract!'}
+      flash.now[:alert] = 'Failed to Close Contract!'
     end
   end
 
@@ -30,16 +30,16 @@ class ContractsController < ApplicationController
 
     def set_renovation_project
       @renovation_project = RenovationProject.find_by(id: params[:renovation_project_id])
-      redirect_to @renovation_project, flash: {danger: 'Renovation Project not found!'} if @renovation_project.blank?
+      redirect_to renovation_projects_path, alert: 'Renovation Project not found!' if @renovation_project.blank?
     end
 
     def set_general_contractor
       @general_contractor = GeneralContractor.find_by(id: params[:general_contractor_id])
-      redirect_to @general_contractor, flash: {danger: 'General Contractor not found!'} if @general_contractor.blank?
+      redirect_to general_contractors_path, alert: 'General Contractor not found!' if @general_contractor.blank?
     end
 
     def set_contract
       @contract = Contract.find_by(id: params[:id])
-      redirect_to @renovation_project, flash: {danger: 'Contract not found!'} if @contract.blank?
+      redirect_to renovation_projects_path, alert: 'Contract not found!' if @contract.blank?
     end
 end

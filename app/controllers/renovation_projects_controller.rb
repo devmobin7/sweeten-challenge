@@ -13,9 +13,9 @@ class RenovationProjectsController < ApplicationController
     @renovation_project = RenovationProject.new(renovation_project_params)
 
     if @renovation_project.save!
-      redirect_to @renovation_project, flash: {success: 'Successfully Created Renovation Project!'}
+      redirect_to @renovation_project, success: 'Successfully Created Renovation Project!'
     else
-      redirect_to action: 'new', flash: {danger: 'Failed to Create Renovation Project!'}
+      redirect_to action: 'new', alert: 'Failed to Create Renovation Project!'
     end
   end
 
@@ -35,6 +35,6 @@ class RenovationProjectsController < ApplicationController
 
     def set_project
       @project = RenovationProject.find_by(id: params[:id])
-      redirect_to @project, flash: {danger: 'Project not found!'} if @project.blank?
+      redirect_to @project, alert: 'Project not found!' if @project.blank?
     end
 end
