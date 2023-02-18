@@ -13,9 +13,10 @@ class GeneralContractorsController < ApplicationController
     @general_contractor = GeneralContractor.new(general_contractor_params)
 
     if @general_contractor.save
-      redirect_to @general_contractor, success: 'Successfully Created General Contractor!'
+      redirect_to @general_contractor, notice: 'Successfully Created General Contractor!'
     else
-      redirect_to action: 'new', alert: 'Failed to Create General Contractor!'
+      flash[:alert] = 'Failed to Create General Contractor!'
+      render :new
     end
   end
 
@@ -31,7 +32,7 @@ class GeneralContractorsController < ApplicationController
 
     def set_contractor
       @contractor = GeneralContractor.find_by(id: params[:id])
-      redirect_to @contractor, alert: 'Contract not found!' if @contractor.blank?
+      redirect_to general_contractors_path, error: 'Contract not found!' if @contractor.blank?
     end
 
     def has_contracts

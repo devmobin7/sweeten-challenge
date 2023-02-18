@@ -45,7 +45,7 @@ class GeneralContractor < ApplicationRecord
     average = self.where('rating <= ?', HIGH_CONTRACTORS).find_by('rating >= ?', AVERAGE_CONTRACTORS)
     contractors[:average] = average if average.present?
 
-    newrecord = self.find_by('project_count < ?', NEW_CONTRACTORS)
+    newrecord = self.where('project_count < ?', NEW_CONTRACTORS).find_by('rating < ?', AVERAGE_CONTRACTORS)
     contractors[:new] = newrecord if newrecord.present?
 
     contractors
