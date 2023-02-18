@@ -7,9 +7,9 @@ class ContractsController < ApplicationController
     @contract = Contract.new(contract_params)
 
     if @contract.save
-      flash.now[:success] = 'Successfully Signed Contract!'
+      redirect_to @renovation_project, success: 'Successfully Signed Contract!'
     else
-      flash.now[:alert] = 'Failed to Signed Contract!'
+      redirect_to @renovation_project, alert: 'Failed to Signed Contract!'
     end
   end
 
@@ -17,9 +17,9 @@ class ContractsController < ApplicationController
     @contract = ContractService.new(params).update(@contract)
 
     if @contract.valid?
-      flash.now[:success] = 'Successfully Closed Contract!'
+      redirect_to @general_contractor, success: 'Successfully Closed Contract!'
     else
-      flash.now[:alert] = 'Failed to Close Contract!'
+      redirect_to @general_contractor, alert: 'Failed to Close Contract!'
     end
   end
 
