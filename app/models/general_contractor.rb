@@ -1,6 +1,6 @@
 class GeneralContractor < ApplicationRecord
   HIGH_CONTRACTORS    = 4.0     # Based on Ranking
-  AVERAGE_CONTRACTORS = 2.5     # Based on Ranking
+  AVERAGE_CONTRACTORS = 1.0     # Based on Ranking
   NEW_CONTRACTORS     = 2       # Based on Total Number of Projects
 
   acts_as_mappable :lat_column_name => :latitude,
@@ -39,13 +39,13 @@ class GeneralContractor < ApplicationRecord
   def self.rank
     contractors = {}
 
-    high = self.find_by('rating >= ?', HIGH_CONTRACTORS)
+    high = self.find_by('rating > ?', HIGH_CONTRACTORS)
     contractors[:high] = high if high.present?
 
     average = self.where('rating <= ?', HIGH_CONTRACTORS).find_by('rating >= ?', AVERAGE_CONTRACTORS)
     contractors[:average] = average if average.present?
 
-    newrecord = self.find_by('project_count <= ?', NEW_CONTRACTORS)
+    newrecord = self.find_by('project_count < ?', NEW_CONTRACTORS)
     contractors[:new] = newrecord if newrecord.present?
 
     contractors
