@@ -1,0 +1,40 @@
+<%= form_for @renovation_project do |f| %>
+  <div class='field text-left input-fields-div'>
+    <%= f.label :Longitude , class: 'text-left'%>
+    <br>
+    <%= f.text_field :longitude, class: 'input-fields-width'%>
+  </div>
+  <br>
+  <div class='field text-left input-fields-div'>
+    <%= f.label :Latitude, class: 'text-left'%>
+    <br>
+    <%= f.text_field :latitude, class: 'input-fields-width'%>
+  </div>
+  <br>
+  <div class='field text-left input-fields-div'>
+    <%= f.label :MinBudget, class: 'text-left'%>
+    <br>
+    <%= f.text_field :min_budget, class: 'input-fields-width'%>
+  </div>
+  <br>
+  <div class='field text-left input-fields-div'>
+    <%= f.label :MaxBudget, class: 'text-left'%>
+    <br>
+    <%= f.text_field :max_budget, class: 'input-fields-width'%>
+  </div>
+  <br>
+  <div class='field text-left input-fields-div'>
+    <%= f.label :DesignServices, class: 'text-left form-checkboxes-width'%>
+    <%= f.check_box :design_services, {}, true, false %>
+  </div>
+  <br>
+  <div class='field text-left input-fields-div'>
+    <%= f.label :BuildServices, class: 'text-left form-checkboxes-width'%>
+    <%= f.check_box :build_services, {}, true, false %>
+  </div>
+  <br>
+  <div class='actions' class='form-buttom-margin'>
+    <%= f.submit 'Submit', class: 'btn-lg btn-success'%>
+    <%= link_to 'Back', '/renovation_projects', class:'btn btn-lg btn-danger back'%>
+  </div>
+<% end %>

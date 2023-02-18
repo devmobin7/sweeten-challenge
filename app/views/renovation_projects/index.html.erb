@@ -1,0 +1,50 @@
+<%= render template: 'home/index' %>
+
+<% flash.each do |key, value| %>
+<div class="row">
+  <div class='col-sm-4'></div>
+  <div class='col-sm-4 text-center'>
+    <p id='notice' class='alert alert-<%= key %>'><%= value %></p>
+  </div>
+  <div class='col-sm-4'></div>
+</div>
+<% end %>
+
+<div class='col-sm-3'></div>
+<div class='col-sm-6 page-border'>
+  <h2 class='text-center'>Renovation Projects</h2>
+  <hr class='hr-margin-top'/>
+  <% if @projects.present? %>
+    <table class='table'>
+      <thead class='table-border'>
+        <tr>
+          <th>Longitude</th>
+          <th>Latitude</th>
+          <th>Min Budget</th>
+          <th>Max Budget</th>
+          <th>Design Services</th>
+          <th>Build Services</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr class='table-row'>
+            <h2><td><%= project.longitude %></td></h2>
+            <h2><td><%= project.latitude %></td></h2>
+            <h2><td><%= project.min_budget %></td></h2>
+            <h2><td><%= project.max_budget %></td></h2>
+            <h2><td><%= project.design_services %></td></h2>
+            <h2><td><%= project.build_services %></td></h2>
+            <h2><td><%= button_to 'View', "renovation_projects/#{project.id}", method: :get, class: 'btn-xs btn-success' %></td></h2>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h3 class='text-center no-found-msg'>No Project Found...</h3>
+  <% end %>
+  <br>
+</div>
+<div class='col-sm-3'></div>
