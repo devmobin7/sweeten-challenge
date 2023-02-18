@@ -1,0 +1,83 @@
+<%= render template: 'home/index' %>
+
+<% flash.each do |key, value| %>
+<div class='row'>
+  <div class='col-sm-4'></div>
+  <div class='col-sm-4 text-center'>
+    <p id='notice' class='alert alert-<%= key %>'><%= value %></p>
+  </div>
+  <div class='col-sm-4'></div>
+</div>
+<% end %>
+
+<div class='row'>
+  <div class='col-sm-3'></div>
+  <div class='col-sm-6 page-border'>
+    <h2 class='text-center'>General Contractor</h2>
+    <table class='table'>
+      <thead class='table-border'>
+        <tr>
+          <th class='text-center'>Longitude</th>
+          <th class='text-center'>Latitude</th>
+          <th class='text-center'>Min Budget</th>
+          <th class='text-center'>Max Budget</th>
+          <th class='text-center'>Design Services</th>
+          <th class='text-center'>Build Services</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @contractor.present? %>
+          <tr class='table-row'>
+            <h2><td class='text-center'><%= @contractor.longitude %></td></h2>
+            <h2><td class='text-center'><%= @contractor.latitude %></td></h2>
+            <h2><td class='text-center'><%= @contractor.min_budget %></td></h2>
+            <h2><td class='text-center'><%= @contractor.max_budget %></td></h2>
+            <h2><td class='text-center'><%= @contractor.design_services %></td></h2>
+            <h2><td class='text-center'><%= @contractor.build_services %></td></h2>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <% if @renovation_projects.present? %>
+      <h2 class='text-center'>Renovation Projects</h2>
+      <table class='table'>
+        <thead class='table-border'>
+          <tr>
+            <th class='text-center'>Longitude</th>
+            <th class='text-center'>Latitude</th>
+            <th class='text-center'>Min Budget</th>
+            <th class='text-center'>Max Budget</th>
+            <th class='text-center'>Design Services</th>
+            <th class='text-center'>Build Services</th>
+            <th class='text-center'>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @renovation_projects.each_with_index do |project, index| %>
+            <tr class='table-row'>
+              <h2><td class='text-center'><%= project.longitude %></td></h2>
+              <h2><td class='text-center'><%= project.latitude %></td></h2>
+              <h2><td class='text-center'><%= project.min_budget %></td></h2>
+              <h2><td class='text-center'><%= project.max_budget %></td></h2>
+              <h2><td class='text-center'><%= project.design_services %></td></h2>
+              <h2><td class='text-center'><%= project.build_services %></td></h2>
+              <h2><td class='text-center'>
+                <div class='switch text-center'>
+                  <input id=<%= project.id %> class='cmn-toggle cmn-toggle-round-flat' type='checkbox' name='end_contract' value='<%= project.id %>' checked>
+                  <label for=<%= project.id %>></label>
+                  <input type='hidden' name='contract_id' value=<%= @contracts[index].id %>>
+                </div>
+              </td></h2>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% elsif @general_contractor.blank? %>
+      <h3 class='no-found-msg'>No Signed Renovation Project Found...</h3>
+    <% end %>
+  </div>
+  <div class='col-sm-3'></div>
+</div>

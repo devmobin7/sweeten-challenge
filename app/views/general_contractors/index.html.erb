@@ -1,0 +1,50 @@
+<%= render template: 'home/index' %>
+
+<% flash.each do |key, value| %>
+<div class="row">
+  <div class='col-sm-4'></div>
+  <div class='col-sm-4 text-center'>
+    <p id='notice' class='alert alert-<%= key %>'><%= value %></p>
+  </div>
+  <div class='col-sm-4'></div>
+</div>
+<% end %>
+
+<div class='col-sm-3'></div>
+<div class='col-sm-6 page-border'>
+  <h2 class='text-center'>General contractors</h2>
+  <hr class='hr-margin-top'/>
+  <% if @contractors.present? %>
+    <table class='table'>
+      <thead class='table-border'>
+        <tr>
+          <th>Longitude</th>
+          <th>Latitude</th>
+          <th>Min Budget</th>
+          <th>Max Budget</th>
+          <th>Design Services</th>
+          <th>Build Services</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @contractors.each do |contractor| %>
+          <tr class='table-row'>
+            <h2><td><%= contractor.longitude %></td></h2>
+            <h2><td><%= contractor.latitude %></td></h2>
+            <h2><td><%= contractor.min_budget %></td></h2>
+            <h2><td><%= contractor.max_budget %></td></h2>
+            <h2><td><%= contractor.design_services %></td></h2>
+            <h2><td><%= contractor.build_services %></td></h2>
+            <h2><td><%= button_to 'View', "general_contractors/#{contractor.id}", method: :get, class: 'btn-xs btn-success' %></td></h2>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h3 class='text-center no-found-msg'>No Contractor Found...</h3>
+  <% end %>
+  <br>
+</div>
+<div class='col-sm-3'></div>
