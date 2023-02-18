@@ -8,7 +8,7 @@ class CreateGeneralContractors < ActiveRecord::Migration[5.2]
       t.boolean :design_services, null: false, default: false
       t.boolean :build_services, null: false, default: false
       t.integer :rating, default: 0
-      t.integer :projects_count, default: 0
+      t.integer :project_count, default: 0
 
       t.timestamps
     end

@@ -27,7 +27,7 @@ class GeneralContractorsControllerTest < ActionDispatch::IntegrationTest
         design_services: true,
         build_services: true,
         rating: 3,
-        projects_count: 2,
+        project_count: 2,
       }
     }
 
